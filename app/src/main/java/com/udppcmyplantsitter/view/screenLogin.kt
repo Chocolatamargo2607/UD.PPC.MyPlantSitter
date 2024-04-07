@@ -1,6 +1,8 @@
 package com.udppcmyplantsitter.view
 
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,11 +16,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,7 +35,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
-import com.udppcmyplantsitter.viewModel.appNavegation.appNavegation
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,26 +43,30 @@ fun screenLogin(navController: NavController){
 
     var MainColor = Color(0xFFC7D247)
 
-
     var nameUser by remember {
         mutableStateOf("")
     }
     var password by remember {
         mutableStateOf("")
     }
-    Row(
-        modifier = Modifier.padding(16.dp)
-    ) {
+    Row() {
+            TopAppBar(
+                title = { Text(text=" My Plant Sitter ღ") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    MainColor,
+                    titleContentColor = Color.White
+                ),
+                navigationIcon = {
+                    IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = null,
+                            tint = Color.White
+                        )
 
-        Button(onClick = { navController.navigate(route = appScreens.screenWelcome.router)},
-            colors = ButtonDefaults.buttonColors(MainColor)
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = null
+                    }
+                }
             )
-            Text(text = "  Back")
-        }
     }
 
     Column(

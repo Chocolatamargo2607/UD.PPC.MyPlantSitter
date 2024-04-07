@@ -13,9 +13,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,19 +49,24 @@ fun screenRegister(navController: NavController){
     var email by remember {
         mutableStateOf("")
     }
-    Row(
-        modifier = Modifier.padding(16.dp)
-    ) {
+    Row() {
+        TopAppBar(
+            title = { Text(text=" My Plant Sitter ღ") },
+            colors = TopAppBarDefaults.topAppBarColors(
+                MainColor,
+                titleContentColor = Color.White
+            ),
+            navigationIcon = {
+                IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null,
+                        tint = Color.White
+                    )
 
-        Button(onClick = { navController.navigate(route = appScreens.screenWelcome.router)},
-            colors = ButtonDefaults.buttonColors(MainColor)
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = null
-            )
-            Text(text = "  Back")
-        }
+                }
+            }
+        )
     }
 
     Column(
@@ -79,7 +87,7 @@ fun screenRegister(navController: NavController){
             },
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = SecondColor,
-                unfocusedIndicatorColor = Color.Black
+                unfocusedIndicatorColor = SecondColor
 
 
             )
@@ -97,7 +105,7 @@ fun screenRegister(navController: NavController){
             },
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = SecondColor,
-                unfocusedIndicatorColor = Color.Black
+                unfocusedIndicatorColor = SecondColor
 
             )
         )
@@ -112,7 +120,7 @@ fun screenRegister(navController: NavController){
             },
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = SecondColor,
-                unfocusedIndicatorColor = Color.Black
+                unfocusedIndicatorColor = SecondColor
             )
         )
         Spacer(modifier = Modifier.height(16.dp))

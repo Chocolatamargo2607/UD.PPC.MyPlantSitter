@@ -4,8 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,16 +19,18 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.R
@@ -39,29 +42,33 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 @Composable
 fun screenWelcome(navController: NavController){
 
+    val imagePainter: Painter = painterResource(id = R.drawable.fondo)
+    BoxWithConstraints(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
+        ) {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = Color.Transparent
+            ) {}
+            Image(
+                painter = imagePainter,
+                contentDescription = null,
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+
+    }
+
+    var MainColor = Color(0xFFC7D247)
     val context = LocalContext.current
-    var backColor = Color(0xFFC7D247)
     val repository = "https://github.com/Chocolatamargo2607/UD.PPC.MyPlantSitter"
     val repositoryintent = remember { Intent(Intent.ACTION_VIEW, Uri.parse(repository)) }
-    Row(){
-        TopAppBar(
-            title = { Text(text="Universidad Distrital Francisco Jose De Caldas") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    backColor,
-                    titleContentColor = Color.White
-            ),
-            navigationIcon = {
-                IconButton(onClick ={ context.startActivity(repositoryintent)}) {
-                    Icon(
-                        imageVector = Icons.Default.Home,
-                        contentDescription = null,
-                        tint = Color.White
-                    )
 
-                }
-            }
-        )
-    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -69,11 +76,11 @@ fun screenWelcome(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-        Image(painter = painterResource(id = R.drawable.logo), contentDescription ="LogoPlantSitter",
+       Image(painter = painterResource(id = R.drawable.logo), contentDescription ="LogoPlantSitter",
             modifier = Modifier.size(400.dp))
         Button(onClick = { navController.navigate(route = appScreens.screenLogin.router) },
             colors = ButtonDefaults.buttonColors(
-                backColor, // Color hexadecimal como color de fondo
+                MainColor, // Color hexadecimal como color de fondo
                 contentColor = Color.White // Color del texto del botón
             )
         ){
@@ -84,7 +91,7 @@ fun screenWelcome(navController: NavController){
         Button(onClick = { navController.navigate(route = appScreens.screenRegister.router)},
 
                 colors = ButtonDefaults.buttonColors(
-                    backColor, // Color hexadecimal como color de fondo
+                    MainColor, // Color hexadecimal como color de fondo
                     contentColor = Color.White // Color del texto del botón
                 )
 
@@ -92,9 +99,22 @@ fun screenWelcome(navController: NavController){
             Text(text = "Register")
 
         }
-        Text(text = "Forgot password")
+
+        IconButton(onClick ={ context.startActivity(repositoryintent)}) {
+            Icon(
+                imageVector = Icons.Default.Home,
+                contentDescription = null,
+                tint = MainColor
+            )
+
+        }
 
 
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun screenWelcomepreview() {
+    screenWelcome(NavController(LocalContext.current))
+}
