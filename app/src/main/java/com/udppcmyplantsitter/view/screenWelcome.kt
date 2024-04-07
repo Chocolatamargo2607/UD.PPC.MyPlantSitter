@@ -31,6 +31,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.R
+
+
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -75,7 +77,7 @@ fun screenWelcome(navController: NavController){
                 contentColor = Color.White // Color del texto del botón
             )
         ){
-            Text(text = "Save New Song")
+            Text(text = "Log in")
         }
         Spacer(modifier = Modifier.width(200.dp))
 
@@ -87,7 +89,7 @@ fun screenWelcome(navController: NavController){
                 )
 
             ) {
-            Text(text = "Practice Maraca")
+            Text(text = "Register")
 
         }
         Text(text = "Forgot password")
