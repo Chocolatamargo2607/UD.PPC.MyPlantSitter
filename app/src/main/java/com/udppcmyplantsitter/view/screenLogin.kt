@@ -1,8 +1,5 @@
 package com.udppcmyplantsitter.view
 
-
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 
@@ -41,7 +39,7 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 @Composable
 fun screenLogin(navController: NavController){
 
-    var MainColor = Color(0xFFC7D247)
+    
 
     var nameUser by remember {
         mutableStateOf("")
@@ -50,23 +48,23 @@ fun screenLogin(navController: NavController){
         mutableStateOf("")
     }
     Row() {
-            TopAppBar(
-                title = { Text(text=" My Plant Sitter ღ") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    MainColor,
-                    titleContentColor = Color.White
-                ),
-                navigationIcon = {
-                    IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = null,
-                            tint = Color.White
-                        )
+        TopAppBar(
+            title = { Text(text=" My Plant Sitter ღ") },
+            colors = TopAppBarDefaults.topAppBarColors(
+                MainColor,
+                titleContentColor = Color.White
+            ),
+            navigationIcon = {
+                IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null,
+                        tint = Color.White
+                    )
 
-                    }
                 }
-            )
+            }
+        )
     }
 
     Column(
@@ -112,7 +110,7 @@ fun screenLogin(navController: NavController){
             )
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = { navController.navigate(route = appScreens.screenMain.router)},
             colors = ButtonDefaults.buttonColors(MainColor)) {
             Text(text = "Log in")
         }

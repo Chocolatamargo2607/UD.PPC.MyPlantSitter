@@ -12,6 +12,7 @@ import com.udppcmyplantsitter.view.screenMain
 import com.udppcmyplantsitter.view.screenMyPlants
 import com.udppcmyplantsitter.view.screenPlants
 import com.udppcmyplantsitter.view.screenRegister
+import com.udppcmyplantsitter.view.screenRegisterAssignment
 
 
 @Composable
@@ -25,5 +26,6 @@ fun appNavegation(){
         composable(route= appScreens.screenAccount.router){ screenAccount(navController) }
         composable(route= appScreens.screenPlants.router){ screenPlants(navController) }
         composable(route= appScreens.screenMyPlants.router){ screenMyPlants(navController) }
+        composable(route= appScreens.screenAssignment.router){ screenRegisterAssignment(navController)}
     }
 }
