@@ -27,5 +27,6 @@ fun appNavegation(){
         composable(route= appScreens.screenPlants.router){ screenPlants(navController) }
         composable(route= appScreens.screenMyPlants.router){ screenMyPlants(navController) }
         composable(route= appScreens.screenAssignment.router){ screenRegisterAssignment(navController)}
+        composable(route= appScreens.tabsMovements.router){ tabsMovements(navController)}
     }
 }

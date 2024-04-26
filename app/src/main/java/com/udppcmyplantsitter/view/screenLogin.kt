@@ -114,7 +114,7 @@ fun screenLogin(navController: NavController){
 
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { navController.navigate(route = appScreens.screenMain.router)},
+        Button(onClick = { navController.navigate(route = appScreens.tabsMovements.router)},
             colors = ButtonDefaults.buttonColors(MainColor)) {
             Text(text = "Log in")
         }
