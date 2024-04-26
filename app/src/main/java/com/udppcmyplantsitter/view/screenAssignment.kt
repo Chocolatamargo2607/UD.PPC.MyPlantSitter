@@ -115,9 +115,8 @@ fun screenRegisterAssignment(navController: NavController) {
                 value = task,
                 onValueChange = {
                     task = it
-                },
-                placeholder = {
-                    Text(text = "Write the description",color = MainColor)
+                },label = {
+                    Text(text = "Write the description", color = MainColor)
                 },
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.White,
@@ -148,7 +147,7 @@ fun screenRegisterAssignment(navController: NavController) {
                 if (save != -1L) {
                     scope.launch {
                         Toast.makeText(
-                            context, "Assignment successfully saved ", Toast.LENGTH_SHORT
+                            context, "Assignment successfully saved ✅", Toast.LENGTH_SHORT
                         ).show()
                     }
                 } else {
