@@ -74,7 +74,7 @@ fun screenRegisterAssignment(navController: NavController) {
                     titleContentColor = Color.White
                 ),
                 navigationIcon = {
-                    IconButton(onClick ={ navController.navigate(route = appScreens.screenMain.router)}) {
+                    IconButton(onClick ={ navController.navigate(route = appScreens.tabsMovements.router)}) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = null,
