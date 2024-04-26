@@ -90,26 +90,6 @@ fun screenMain(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ){
-        Row() {
-            TopAppBar(
-                title = { Text(text=" My Plant Sitter ღ") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    MainColor,
-                    titleContentColor = Color.White
-                ),
-                navigationIcon = {
-                    IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = null,
-                            tint = Color.White
-                        )
-
-                    }
-                }
-            )
-        }
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
