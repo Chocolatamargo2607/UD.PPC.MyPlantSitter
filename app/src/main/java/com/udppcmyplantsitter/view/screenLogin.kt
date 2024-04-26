@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.ui.theme.MainColor
+import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 
@@ -39,7 +40,6 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 @Composable
 fun screenLogin(navController: NavController){
 
-    
 
     var nameUser by remember {
         mutableStateOf("")
@@ -84,8 +84,8 @@ fun screenLogin(navController: NavController){
                 Text(text = "Name User", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = MainColor,
-                unfocusedIndicatorColor = Color.Black
+                containerColor = SecondColor,
+                unfocusedIndicatorColor = MainColor
 
 
             )
@@ -95,6 +95,7 @@ fun screenLogin(navController: NavController){
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = "Insert your password")
         Spacer(modifier = Modifier.height(16.dp))
+
         TextField(
             value = password,
             onValueChange = {
@@ -104,10 +105,13 @@ fun screenLogin(navController: NavController){
                 Text(text = "Password", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = MainColor,
-                unfocusedIndicatorColor = Color.Black
+                containerColor = SecondColor,
+                unfocusedIndicatorColor = MainColor
+
 
             )
+
+
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { navController.navigate(route = appScreens.screenMain.router)},
