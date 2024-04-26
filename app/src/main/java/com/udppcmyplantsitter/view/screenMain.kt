@@ -45,6 +45,7 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 ///////////
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -58,6 +59,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.toSize
 import com.example.udppcmyplantsitter.R
+import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.udppcmyplantsitter.dataManagement.Helper
 import com.udppcmyplantsitter.dataManagement.AssignmentDTO
 import com.udppcmyplantsitter.dataManagement.AssignmentService
@@ -168,12 +170,17 @@ fun screenMain(navController: NavController){
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 //Text(text = "ID: ${song.id}", modifier = Modifier.weight(1f))
+                                Icon(
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = null,
+                                    tint = SecondColor
+                                )
                                 Text(
-                                    text = "Name Song: ${song.name}",
+                                    text = "  ${song.name}",
                                     modifier = Modifier.weight(3f)
                                 )
                                 Text(
-                                    text = "Date Register: ${song.date}\n",
+                                    text = "Assigned day: ${song.date}\n",
                                     modifier = Modifier.weight(3f)
                                 )
                                 IconButton(onClick = {
@@ -195,6 +202,10 @@ fun screenMain(navController: NavController){
                         title = { Text(text = chosenSong.name) },
                         text = { Text(text = chosenSong.task) },
                         confirmButton = {
+                            Button(onClick = { /*TODO*/ },
+                                colors = ButtonDefaults.buttonColors(MainColor)) {
+                                Text("Edit")
+                            }
                             Button(onClick = { open_Dialog = false },
                                 colors = ButtonDefaults.buttonColors(MainColor)) {
                                 Text("Close")
