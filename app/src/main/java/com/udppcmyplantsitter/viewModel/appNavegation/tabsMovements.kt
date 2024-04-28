@@ -3,6 +3,7 @@ package com.udppcmyplantsitter.viewModel.appNavegation
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -31,9 +32,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
@@ -96,8 +99,9 @@ fun tabsMovements(navController: NavController){
                             onClick = {  },
                             leadingIcon = {
                                 Icon(
-                                    imageVector = Icons.Filled.Settings,
+                                    painter = painterResource(id = R.drawable.iconlanguage),
                                     contentDescription = "Language",
+                                    modifier = Modifier.size(31.dp),
                                     tint = SecondColor
                                 )
 
