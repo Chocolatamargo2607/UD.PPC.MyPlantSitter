@@ -2,7 +2,6 @@ package com.udppcmyplantsitter.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -19,7 +18,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,82 +47,68 @@ fun screenPlants(navController: NavController){
 
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            .fillMaxWidth()
+            .padding(20.dp)
+    ) {
+        LazyColumn(
+            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 5.dp)
         ) {
+            items(songs) { song ->
+                Card(
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                LazyColumn(
-                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 5.dp)
-                ) {
-                    items(songs) { song ->
-                        Card(
-
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(7.dp)
-                                .clickable {
-                                    chosenSong = song
-                                    open_Dialog = true
-                                }
-
-                        ) {
-                            Row(
-                                modifier = Modifier.padding(8.dp),
-                                verticalAlignment = Alignment.CenterVertically
-
-                            ) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.iconplant),
-                                    contentDescription = "iconplant",
-                                    modifier = Modifier.size(34.dp),
-                                    tint = SecondColor
-                                )
-
-                                Text(
-                                    text = "  ${song.name}",
-                                    modifier = Modifier.weight(50f)
-
-                                )
-
-                            }
-
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                        .clickable {
+                            chosenSong = song
+                            open_Dialog = true
                         }
+
+                ) {
+                    Row(
+                        modifier = Modifier.padding(8.dp),
+
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.iconplant),
+                            contentDescription = "iconplant",
+                            modifier = Modifier.size(34.dp),
+                            tint = SecondColor
+                        )
+
+                        Text(
+                            text = "  ${song.name}",
+                            modifier = Modifier.weight(50f)
+
+                        )
 
                     }
+
                 }
-                if (open_Dialog){
-                    AlertDialog(onDismissRequest = { open_Dialog = false },
-                        title = { Text(text = chosenSong.name) },
-                        text = { Text(text = chosenSong.task) },
-                        icon = {
-                            Image(
-                                painter = painterResource(id = R.drawable.plantexample),
-                                contentDescription = "plant"
-                            )
-                        },
-                        confirmButton = {
-                            Button(onClick = { open_Dialog = false },
-                                colors = ButtonDefaults.buttonColors(MainColor)) {
-                                Text("Close")
-                            }
-                        }
-                    )
-                }
+
             }
+        }
+        if (open_Dialog){
+            AlertDialog(onDismissRequest = { open_Dialog = false },
+                title = { Text(text = chosenSong.name) },
+                text = { Text(text = chosenSong.task) },
+                icon = {
+                    Image(
+                        painter = painterResource(id = R.drawable.plantexample),
+                        contentDescription = "plant"
+                    )
+                },
+                confirmButton = {
+                    Button(onClick = { open_Dialog = false },
+                        colors = ButtonDefaults.buttonColors(MainColor)) {
+                        Text("Close")
+                    }
+                }
+            )
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
