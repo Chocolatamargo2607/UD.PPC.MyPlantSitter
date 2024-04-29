@@ -36,7 +36,7 @@ sealed class ItemsTabs(
         "Plants",
         Icons.Filled.CheckCircle,
         Icons.Outlined.CheckCircle,
-        { navController -> screenRegister(navController = navController)}
+        { navController -> screenPlants(navController = navController)}
     )
     object tabMyPlants: ItemsTabs(
         "My Plants",
