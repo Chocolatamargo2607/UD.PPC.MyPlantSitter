@@ -78,7 +78,7 @@ fun screenAccount (navController: NavController){
                 )
 
                 Text(
-                    text = "*user*",
+                    text = "*example123*",
                     color = Color.Black
                 )
 
@@ -88,7 +88,7 @@ fun screenAccount (navController: NavController){
                 )
 
                 Text(
-                    text = "*email*",
+                    text = "*email@example.com*",
                     color = Color.Black
                 )
 

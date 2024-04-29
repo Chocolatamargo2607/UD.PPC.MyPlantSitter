@@ -8,4 +8,6 @@ sealed class appScreens (val router: String){
     object screenAccount: appScreens("screenAccount")
     object screenPlants: appScreens("screenPlants")
     object screenMyPlants: appScreens("screenMyPlants")
+    object screenAssignment: appScreens("screenAssignment")
+    object tabsMovements: appScreens("tabsMovements")
 }

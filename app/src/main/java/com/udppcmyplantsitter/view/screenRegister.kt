@@ -31,14 +31,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.udppcmyplantsitter.ui.theme.MainColor
+import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun screenRegister(navController: NavController){
 
-    var MainColor = Color(0xFFC7D247)
-    var SecondColor = Color(0xFF74A6B1)
     
     var nameUser by remember {
         mutableStateOf("")
