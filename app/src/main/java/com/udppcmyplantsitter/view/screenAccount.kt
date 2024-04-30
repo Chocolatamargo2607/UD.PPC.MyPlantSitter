@@ -37,7 +37,7 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 fun screenAccount (navController: NavController){
     Row() {
         TopAppBar(
-            title = { Text(text=" My Plant Sitter ღ") },
+            title = { Text(text=" Account") },
             colors = TopAppBarDefaults.topAppBarColors(
                 MainColor,
                 titleContentColor = Color.White
@@ -73,7 +73,7 @@ fun screenAccount (navController: NavController){
                 )
 
                 Text(
-                    text = "Username",
+                    text = "Username: ",
                     color = Color.Black
                 )
 
@@ -83,7 +83,7 @@ fun screenAccount (navController: NavController){
                 )
 
                 Text(
-                    text = "Email",
+                    text = "Email: ",
                     color = Color.Black
                 )
 
@@ -132,6 +132,6 @@ fun screenAccount (navController: NavController){
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewUserProfileScreen() {
+fun screenAccountPreview() {
     screenAccount(NavController(LocalContext.current))
 }
