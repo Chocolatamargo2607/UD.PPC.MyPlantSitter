@@ -32,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.ui.theme.MainColor
-import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 
@@ -40,6 +39,7 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 @Composable
 fun screenLogin(navController: NavController){
 
+    
 
     var nameUser by remember {
         mutableStateOf("")
@@ -81,13 +81,11 @@ fun screenLogin(navController: NavController){
                 nameUser = it
             },
             label = {
-                Text(text = "Name User", color = Color.White)
+                Text(text = "Username", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = SecondColor,
-                unfocusedIndicatorColor = MainColor
-
-
+                containerColor = MainColor,
+                unfocusedIndicatorColor = Color.Black
             )
 
 
@@ -95,7 +93,6 @@ fun screenLogin(navController: NavController){
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = "Insert your password")
         Spacer(modifier = Modifier.height(16.dp))
-
         TextField(
             value = password,
             onValueChange = {
@@ -105,16 +102,13 @@ fun screenLogin(navController: NavController){
                 Text(text = "Password", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = SecondColor,
-                unfocusedIndicatorColor = MainColor
-
+                containerColor = MainColor,
+                unfocusedIndicatorColor = Color.Black
 
             )
-
-
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { navController.navigate(route = appScreens.tabsMovements.router)},
+        Button(onClick = { navController.navigate(route = appScreens.screenMain.router)},
             colors = ButtonDefaults.buttonColors(MainColor)) {
             Text(text = "Log in")
         }

@@ -83,7 +83,7 @@ fun screenRegister(navController: NavController){
                 nameUser = it
             },
             label = {
-                Text(text = "Name User", color = Color.White)
+                Text(text = "Username", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = SecondColor,
