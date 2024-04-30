@@ -10,4 +10,7 @@ sealed class appScreens (val router: String){
     object screenMyPlants: appScreens("screenMyPlants")
     object screenAssignment: appScreens("screenAssignment")
     object tabsMovements: appScreens("tabsMovements")
+    object modalMyPlant: appScreens("modalMyPlant")
+    object screenRegisterMyPlants: appScreens("screenRegisterMyPlants")
+
 }
