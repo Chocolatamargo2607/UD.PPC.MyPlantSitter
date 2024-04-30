@@ -1,7 +1,11 @@
 package com.udppcmyplantsitter.view
 
+import android.icu.util.Calendar
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,8 +14,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,6 +35,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,6 +52,7 @@ import com.udppcmyplantsitter.dataManagement.AssignmentService
 import kotlinx.coroutines.launch
 
 
+@RequiresApi(Build.VERSION_CODES.N)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun screenRegisterAssignment(navController: NavController) {
@@ -61,6 +70,21 @@ fun screenRegisterAssignment(navController: NavController) {
     var date by remember {
         mutableStateOf("")
     }
+    val year: Int
+    val month: Int
+    val day: Int
+    val calendar= Calendar.getInstance()
+
+    year = calendar.get(Calendar.YEAR)
+    month = calendar.get(Calendar.MONTH)
+    day = calendar.get(Calendar.DAY_OF_MONTH)
+
+    val datePickerDialog = android.app.DatePickerDialog(
+        context,
+        { _, year: Int, month: Int, day: Int ->
+            date = "$day/${month + 1}/$year"
+        }, year, month, day
+    )
 
     Column(
         modifier = Modifier
@@ -125,20 +149,32 @@ fun screenRegisterAssignment(navController: NavController) {
                 )
             )
             Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
-            TextField(
-                value = date,
-                onValueChange = {
-                    date = it
-                },
-                placeholder = {
-                    Text(text = "Date Assigment",color = MainColor)
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.White,
-                    unfocusedIndicatorColor = MaterialTheme.colorScheme.background
+            Row (modifier = Modifier.align(Alignment.CenterHorizontally)){
+                TextField(
+                    value = date,
+                    onValueChange = {date = it},
+                    readOnly = true,
+                    label =  {
+                        Text(text = "Date Assigment",color = MainColor)
+                    },
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color.White,
+                        unfocusedIndicatorColor = MaterialTheme.colorScheme.background
 
+                    ),
+                    modifier = Modifier
+                        .width(230.dp)
                 )
-            )
+                Icon(
+                    imageVector = Icons.Filled.DateRange,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(50.dp)
+                        .padding(4.dp)
+                        .clickable { datePickerDialog.show() },
+                    tint = Color.White
+                )
+            }
             Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
             Button(onClick = {
                 var plant = AssignmentDTO(0, name, date , task)
@@ -169,6 +205,7 @@ fun screenRegisterAssignment(navController: NavController) {
 
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
 @Preview(showBackground = true)
 @Composable
 fun screenRegisterAssignmentPreview() {
