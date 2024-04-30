@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.ui.theme.MainColor
+import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 
@@ -39,7 +40,7 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 @Composable
 fun screenLogin(navController: NavController){
 
-    
+
 
     var nameUser by remember {
         mutableStateOf("")
@@ -66,7 +67,6 @@ fun screenLogin(navController: NavController){
             }
         )
     }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,11 +81,11 @@ fun screenLogin(navController: NavController){
                 nameUser = it
             },
             label = {
-                Text(text = "Username", color = Color.White)
+                Text(text = "User Name", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = MainColor,
-                unfocusedIndicatorColor = Color.Black
+                containerColor = SecondColor,
+                unfocusedIndicatorColor = MainColor
             )
 
 
@@ -102,13 +102,13 @@ fun screenLogin(navController: NavController){
                 Text(text = "Password", color = Color.White)
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = MainColor,
-                unfocusedIndicatorColor = Color.Black
+                containerColor = SecondColor,
+                unfocusedIndicatorColor = MainColor
 
             )
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { navController.navigate(route = appScreens.screenMain.router)},
+        Button(onClick = { navController.navigate(route = appScreens.tabsMovements.router)},
             colors = ButtonDefaults.buttonColors(MainColor)) {
             Text(text = "Log in")
         }

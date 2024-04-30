@@ -1,5 +1,7 @@
 package com.udppcmyplantsitter.modelpackage
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Favorite
@@ -38,6 +40,7 @@ sealed class ItemsTabs(
         Icons.Outlined.CheckCircle,
         { navController -> screenPlants(navController = navController)}
     )
+    @RequiresApi(Build.VERSION_CODES.N)
     object tabMyPlants: ItemsTabs(
         "My Plants",
         Icons.Filled.Favorite,
