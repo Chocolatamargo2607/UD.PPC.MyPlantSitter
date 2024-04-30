@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.example.udppcmyplantsitter.R
+import com.udppcmyplantsitter.dataManagement.Plant
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,25 +65,27 @@ fun screenMyPlants(navController: NavController) {
 
 @Composable
 fun PlantList(navController: NavController) {
+    //ejemplo de plantas
+    val plant1 = Plant("Sunflower",null, R.drawable.sunflower)
+    val plant2 = Plant("Cactus", null, R.drawable.plantexample)
+    val plant3 = Plant("Example Plant", null, R.drawable.iconplant)
+
     //lista de plantas con su imagen
-    val plantItems = listOf(
-        PlantItem("Sunflower", R.drawable.sunflower),
-        PlantItem("Planta 2", R.drawable.plantexample),
-        PlantItem("Planta 3", R.drawable.iconplant)
-    )
+    val plantList = listOf(plant1,plant2,plant3)
+
     LazyColumn(modifier = Modifier.background(Color.White)
     ){
-        items(plantItems) { plant ->
+        items(plantList) { plant ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .clickable { navController.navigate("Detalle/${plant.name}") },
+                    .clickable { navController.navigate(route = appScreens.modalMyPlant.router) },
                 verticalAlignment = Alignment.CenterVertically
             ) {
         Image(
-            painter = painterResource(id = plant.imageResId),
-            contentDescription = null, // descripcion de la planta
+            painter = painterResource(id = plant.image!!),
+            contentDescription = null,
             modifier = Modifier.size(50.dp)
         )
         Text(text = plant.name, modifier = Modifier.padding(start = 16.dp))
@@ -90,12 +93,10 @@ fun PlantList(navController: NavController) {
         }
     }
 }
-
-data class PlantItem(val name: String, val imageResId: Int)
 @Composable
 fun RegisterButton(navController: NavController) {
     Button(
-        onClick = {navController.navigate("/*logica boton*/")},
+        onClick = {navController.navigate(route = appScreens.screenRegisterMyPlants.router)},
         modifier = Modifier
             .padding(20.dp)
             .fillMaxWidth(),
@@ -104,9 +105,8 @@ fun RegisterButton(navController: NavController) {
         Text(text = "Register Plant")
     }
 }
-
 @Preview
 @Composable
-fun PreviewMainScreen() {
+fun screenMyPlantsPreview() {
     screenMyPlants(NavController(LocalContext.current))
 }
