@@ -20,6 +20,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,24 +32,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
+import com.udppcmyplantsitter.viewModel.appNavegation.userViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun screenRegister(navController: NavController){
+fun screenRegister(navController: NavController, viewModel: userViewModel = viewModel()){
 
-    
-    var nameUser by remember {
-        mutableStateOf("")
-    }
-    var password by remember {
-        mutableStateOf("")
-    }
-    var email by remember {
-        mutableStateOf("")
-    }
+    val nameUser by viewModel.nameUser.collectAsState()
+    val password by viewModel.password.collectAsState()
+    val email by viewModel.email.collectAsState()
+
     Row() {
         TopAppBar(
             title = { Text(text=" My Plant Sitter ღ") },
@@ -80,7 +77,7 @@ fun screenRegister(navController: NavController){
         TextField(
             value = nameUser,
             onValueChange = {
-                nameUser = it
+                viewModel.onNameUserChange(it)
             },
             label = {
                 Text(text = "Username", color = Color.White)
@@ -98,7 +95,7 @@ fun screenRegister(navController: NavController){
         TextField(
             value = password,
             onValueChange = {
-                password = it
+                viewModel.onPasswordChange(it)
             },
             placeholder = {
                 Text(text = "Password", color = Color.White)
@@ -113,7 +110,7 @@ fun screenRegister(navController: NavController){
         TextField(
             value = email,
             onValueChange = {
-                email= it
+                viewModel.onEmailChange(it)
             },
             placeholder = {
                 Text(text = "Email", color = Color.White)
@@ -124,7 +121,16 @@ fun screenRegister(navController: NavController){
             )
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {},
+        Button(onClick = {
+            viewModel.registerUser(
+                onSuccess = {
+                    // Navegar a la pantalla de éxito o hacer algo en el éxito
+                },
+                onError = { error ->
+                    // Mostrar mensaje de error, por ejemplo con un Snackbar
+                }
+            )
+        },
             colors = ButtonDefaults.buttonColors(MainColor)) {
             Text(text = "Register")
         }
