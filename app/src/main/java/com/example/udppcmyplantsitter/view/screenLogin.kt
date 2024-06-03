@@ -39,17 +39,19 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
+import com.example.udppcmyplantsitter.viewModel.AuthFireBase
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun screenLogin(navController: NavController){
+fun screenLogin(navController: NavController,
+                viewModel: AuthFireBase = androidx.lifecycle.viewmodel.compose.viewModel()
+){
 // True = Login; False= Create
     val context = LocalContext.current
     val showLoginForm = rememberSaveable{
@@ -86,11 +88,10 @@ fun screenLogin(navController: NavController){
                     isCreateAccount = false
                 ){
                         email, password ->
-                    Log.d("PlantsTrue", "Logged in with $email & $password")
+                    viewModel.signInWithEmailAndPassword(email,password){
+                        navController.navigate(route = appScreens.tabsMovements.router)
+                    }
 
-                    Toast.makeText(
-                        context, "Log in True", Toast.LENGTH_SHORT
-                    ).show()
                 }
             }else{
                 Text(text = "Register an account")
@@ -103,6 +104,10 @@ fun screenLogin(navController: NavController){
                     Toast.makeText(
                         context, "Register True", Toast.LENGTH_SHORT
                     ).show()
+                    viewModel.createUser(email,password){
+                        navController.navigate(route = appScreens.screenLogin.router)
+                    }
+
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
@@ -258,10 +263,4 @@ fun InputField(
             keyboardType= keyboardType
         )
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun screenLoginpreview() {
-    screenLogin(NavController(LocalContext.current))
 }
