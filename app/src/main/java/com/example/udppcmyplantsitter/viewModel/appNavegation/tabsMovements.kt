@@ -38,6 +38,7 @@ import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
+import com.google.firebase.auth.FirebaseAuth
 import com.udppcmyplantsitter.modelpackage.ItemsTabs
 import com.udppcmyplantsitter.modelpackage.ItemsTabs.*
 import kotlinx.coroutines.launch
@@ -111,7 +112,8 @@ fun tabsMovements(navController: NavController){
                         )
                         DropdownMenuItem(
                             text = { Text("Log out", color = SecondColor) },
-                            onClick = {  },
+                            onClick = { FirebaseAuth.getInstance().signOut()
+                                navController.navigate(route = appScreens.screenWelcome.router) },
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Filled.ExitToApp,

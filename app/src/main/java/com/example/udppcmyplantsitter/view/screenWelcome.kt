@@ -1,5 +1,6 @@
 package com.udppcmyplantsitter.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -37,7 +38,9 @@ import com.example.udppcmyplantsitter.R
 
 
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
+import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun screenWelcome(navController: NavController){
@@ -78,12 +81,19 @@ fun screenWelcome(navController: NavController){
     ){
        Image(painter = painterResource(id = R.drawable.logo), contentDescription ="LogoPlantSitter",
             modifier = Modifier.size(400.dp))
-        Button(onClick = { navController.navigate(route = appScreens.screenLogin.router) },
+        Button(
+            onClick = {
+                if (FirebaseAuth.getInstance().currentUser?.email.isNullOrEmpty()) {
+                    navController.navigate(route = appScreens.screenLogin.router)
+                } else {
+                    navController.navigate(route = appScreens.tabsMovements.router)
+                }
+            },
             colors = ButtonDefaults.buttonColors(
-                MainColor, // Color hexadecimal como color de fondo
-                contentColor = Color.White // Color del texto del botón
+                MainColor,
+                contentColor = Color.White
             )
-        ){
+        ) {
             Text(text = "Log in")
         }
         Spacer(modifier = Modifier.width(200.dp))
