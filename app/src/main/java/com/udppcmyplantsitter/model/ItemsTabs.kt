@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.udppcmyplantsitter.view.screenLogin
 import com.udppcmyplantsitter.view.screenMain
+import com.udppcmyplantsitter.view.screenMyPlants
 import com.udppcmyplantsitter.view.screenPlants
 import com.udppcmyplantsitter.view.screenRegister
 import com.udppcmyplantsitter.view.screenRegisterAssignment
@@ -45,7 +46,7 @@ sealed class ItemsTabs(
         "My Plants",
         Icons.Filled.Favorite,
         Icons.Outlined.FavoriteBorder,
-        {  navController -> screenRegisterAssignment(navController = navController) }
+        {  navController -> screenMyPlants(navController = navController) }
 
     )
 }

@@ -1,5 +1,7 @@
 package com.udppcmyplantsitter.viewModel.appNavegation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -47,6 +49,7 @@ import kotlinx.coroutines.launch
 
 
 
+@RequiresApi(Build.VERSION_CODES.N)
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun tabsMovements(navController: NavController){
@@ -84,16 +87,19 @@ fun tabsMovements(navController: NavController){
                     ){
                         DropdownMenuItem(
                             text = { Text("Account", color = SecondColor) },
-                            onClick = {  },
+                            onClick = {
+                                navController.navigate(route = appScreens.screenAccount.router)
+                                showMenu = false
+                            },
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Filled.AccountCircle,
                                     contentDescription = "Account",
                                     tint = SecondColor
                                 )
-
                             }
                         )
+
                         DropdownMenuItem(
                             text = { Text("Language", color = SecondColor) },
                             onClick = {  },

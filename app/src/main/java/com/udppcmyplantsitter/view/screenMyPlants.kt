@@ -40,23 +40,6 @@ fun screenMyPlants(navController: NavController) {
             .background(Color.White),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ){
-        TopAppBar (
-            title = { Text(text = "My plants") },
-            colors = TopAppBarDefaults.topAppBarColors(
-                MainColor,
-                titleContentColor = Color.White
-            ),
-            navigationIcon = {
-                IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = null,
-                        tint = Color.White
-                    )
-
-                }
-            }
-        )
         PlantList(navController)
         Spacer(modifier = Modifier.weight(1f))
         RegisterButton(navController)

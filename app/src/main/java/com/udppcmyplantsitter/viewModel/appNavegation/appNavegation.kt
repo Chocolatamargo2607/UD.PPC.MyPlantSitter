@@ -1,5 +1,7 @@
 package com.udppcmyplantsitter.viewModel.appNavegation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -19,6 +21,7 @@ import com.udppcmyplantsitter.view.screenRegisterAssignment
 import com.udppcmyplantsitter.view.screenRegisterMyPlants
 
 
+@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun appNavegation(){
     val navController = rememberNavController()
@@ -34,6 +37,5 @@ fun appNavegation(){
         composable(route= appScreens.tabsMovements.router){ tabsMovements(navController)}
         composable(route= appScreens.screenRegisterMyPlants.router){ screenRegisterMyPlants(navController) }
         composable(route= appScreens.modalMyPlant.router){ modalMyPlant(navController)}
-
     }
 }

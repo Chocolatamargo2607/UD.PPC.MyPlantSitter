@@ -5,7 +5,6 @@ import androidx.navigation.NavController
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -13,13 +12,9 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,7 +38,7 @@ fun screenAccount (navController: NavController){
                 titleContentColor = Color.White
             ),
             navigationIcon = {
-                IconButton(onClick ={ navController.navigate(route = appScreens.screenWelcome.router)}) {
+                IconButton(onClick ={ navController.navigate(route = appScreens.tabsMovements.router)}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = null,
@@ -62,7 +57,7 @@ fun screenAccount (navController: NavController){
             ) {
                 Image(
 
-                    painter = painterResource(id = R.drawable.logo),
+                    painter = painterResource(id = R.drawable.logoapp),
                     contentDescription = null,
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
@@ -94,7 +89,7 @@ fun screenAccount (navController: NavController){
 
                 //Boton modify information
                 Button(
-                    onClick = { /* logica del boton*/ },
+                    onClick = {  },
                     modifier = Modifier.align(Alignment.CenterHorizontally),
                     colors = ButtonDefaults.buttonColors(MainColor)
                 ) {
@@ -105,7 +100,7 @@ fun screenAccount (navController: NavController){
                 }
                 //Boton delete account
                 Button(
-                    onClick = { /* logica del boton */ },
+                    onClick = {  },
                     modifier = Modifier.align(Alignment.CenterHorizontally),
                     colors = ButtonDefaults.buttonColors(MainColor)
                 ) {
@@ -114,17 +109,7 @@ fun screenAccount (navController: NavController){
                         color = Color.White
                         )
                 }
-                //Boton logout
-                Button(
-                    onClick = { /* logica del boton */ },
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    colors = ButtonDefaults.buttonColors(MainColor)
-                ) {
-                    Text(
-                        text = "Logout",
-                        color = Color.White
-                        )
-                }
+
             }
 
     }
