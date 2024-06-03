@@ -124,7 +124,7 @@ fun screenRegister(navController: NavController){
             )
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {},
+        Button(onClick = {navController.navigate(route = appScreens.tabsMovements.router)},
             colors = ButtonDefaults.buttonColors(MainColor)) {
             Text(text = "Register")
         }

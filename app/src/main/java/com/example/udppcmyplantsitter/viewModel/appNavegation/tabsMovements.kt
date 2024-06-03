@@ -1,4 +1,4 @@
-package com.udppcmyplantsitter.viewModel.appNavegation
+package com.example.udppcmyplantsitter.viewModel.appNavegation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -12,10 +12,8 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,11 +35,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
-import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.udppcmyplantsitter.modelpackage.ItemsTabs
 import com.udppcmyplantsitter.modelpackage.ItemsTabs.*
 import kotlinx.coroutines.launch

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "635717343966",
+    "project_id": "myplant-fb59c",
+    "storage_bucket": "myplant-fb59c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635717343966:android:c89fa1eb7b27ba42c5404f",
+        "android_client_info": {
+          "package_name": "com.example.udppcmyplantsitter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpJISFLdVSzj_qpO-JhDErBAqNDDBXSQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

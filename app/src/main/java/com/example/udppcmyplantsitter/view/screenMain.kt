@@ -1,4 +1,4 @@
-package com.udppcmyplantsitter.view
+package com.example.udppcmyplantsitter.view
 
 
 import android.widget.Toast

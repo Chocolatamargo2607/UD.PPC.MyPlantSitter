@@ -5,23 +5,16 @@ import androidx.annotation.RequiresApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
-import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
-import com.udppcmyplantsitter.view.screenLogin
-import com.udppcmyplantsitter.view.screenMain
-import com.udppcmyplantsitter.view.screenMyPlants
+import com.example.udppcmyplantsitter.view.screenMain
+import com.example.udppcmyplantsitter.view.screenMyPlants
 import com.udppcmyplantsitter.view.screenPlants
-import com.udppcmyplantsitter.view.screenRegister
-import com.udppcmyplantsitter.view.screenRegisterAssignment
 
 sealed class ItemsTabs(
     var title: String,
@@ -33,7 +26,7 @@ sealed class ItemsTabs(
         "Main",
         Icons.Filled.Home,
         Icons.Outlined.Home,
-        {  navController -> screenMain(navController = navController)}
+        {  navController -> screenMain(navController = navController) }
     )
     object tabPlants: ItemsTabs(
         "Plants",
