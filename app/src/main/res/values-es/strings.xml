@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Plant Sitter ღ</string>
+    <string name="app_name">My Plant Sitter</string>
     <string name="button_log_in">Iniciar sesion</string>
     <string name="login_with_your_account">Iniciar sesion con su cuenta</string>
     <string name="register_an_account">Registrar una cuenta</string>
