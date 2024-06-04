@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,7 +24,7 @@ import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.example.udppcmyplantsitter.R
 import com.udppcmyplantsitter.dataManagement.Plant
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun screenMyPlants(navController: NavController) {
     Column(

@@ -26,7 +26,7 @@ class AuthFireBase: ViewModel() {
 
                     Log.d("FB", "" +
                             "singInWithEmailAndPassword Falló!!!: ${ex.localizedMessage}")
-                    //errorLogueo() funcion para demostrar que algo fallo
+                    //errorLogeo() funcion para demostrar que algo fallo
                 }
         }catch(ex:Exception){
             Log.d("Login","Logueo: ${ex.message}")
