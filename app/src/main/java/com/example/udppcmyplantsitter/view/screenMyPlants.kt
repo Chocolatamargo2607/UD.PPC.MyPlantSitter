@@ -10,6 +10,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
+import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -91,12 +93,29 @@ fun PlantCard(plant: Plant) {
             .fillMaxWidth()
             .padding(vertical = 8.dp)
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Text(text = "Name: ${plant.name}")
-            Text(text = "Category: ${plant.category}")
+        Row(
+            modifier = Modifier.padding(8.dp),
+
+            ){
+            Icon(
+                painter = painterResource(id = R.drawable.iconplant),
+                contentDescription = "iconplant",
+                modifier = Modifier.size(34.dp),
+                tint = SecondColor
+            )
+
+            Column(
+                modifier = Modifier
+
+                    .padding(5.dp)
+            ) {
+                Text(text = "Name: ${plant.name}")
+                Text(text = "Category: ${plant.category}")
+
+
+            }
         }
+
     }
 }
 
