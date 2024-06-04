@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.view.screenMain
 import com.example.udppcmyplantsitter.view.screenMyPlants
-import com.udppcmyplantsitter.view.screenPlants
+import com.example.udppcmyplantsitter.view.screenPlants
 
 sealed class ItemsTabs(
     var title: String,

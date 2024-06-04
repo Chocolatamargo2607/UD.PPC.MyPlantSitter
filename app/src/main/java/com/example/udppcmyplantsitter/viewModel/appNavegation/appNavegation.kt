@@ -7,15 +7,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.udppcmyplantsitter.view.screenAccount
-import com.udppcmyplantsitter.view.screenWelcome
 import com.example.udppcmyplantsitter.view.screenLogin
 import com.example.udppcmyplantsitter.view.screenMain
 import com.example.udppcmyplantsitter.view.modalMyPlant
 import com.example.udppcmyplantsitter.view.screenMyPlants
-import com.udppcmyplantsitter.view.screenPlants
+import com.example.udppcmyplantsitter.view.screenPlants
 import com.udppcmyplantsitter.view.screenRegister
 import com.udppcmyplantsitter.view.screenRegisterAssignment
 import com.udppcmyplantsitter.view.screenRegisterMyPlants
+import com.udppcmyplantsitter.view.screenWelcome
 
 
 @RequiresApi(Build.VERSION_CODES.N)

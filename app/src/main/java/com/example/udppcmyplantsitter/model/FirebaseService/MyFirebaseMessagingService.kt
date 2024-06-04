@@ -1,4 +1,4 @@
-package com.example.udppcmyplantsitter
+package com.example.udppcmyplantsitter.model.FirebaseService
 
 import com.google.firebase.messaging.FirebaseMessagingService
 
