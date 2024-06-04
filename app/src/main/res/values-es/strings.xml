@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Plant Sitter ღ</string>
+    <string name="button_log_in">Iniciar sesion</string>
+    <string name="login_with_your_account">Iniciar sesion con su cuenta</string>
+    <string name="register_an_account">Registrar una cuenta</string>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
+    <string name="option_register">Registrarse</string>
+    <string name="option_log_in">Iniciar sesion</string>
+    <string name="password">Contraseña</string>
+    <string name="in_register">Registrarse</string>
+    <string name="in_log_in">Iniciar sesion</string>
+    <string name="email">Correo</string>
+    <string name="account">Cuenta</string>
+    <string name="language">Idioma</string>
+    <string name="log_out">Cerrar sesión</string>
+    <string name="button_register_assignment">Registrar Asignación</string>
+    <string name="search">Buscar</string>
+    <string name="assignment_deleted">Asignación eliminada</string>
+    <string name="button_edit">Editar</string>
+    <string name="button_close">Cerrar</string>
+    <string name="assigned_day">Día asignado: %1$s</string>
+    <string name="input_name_plant">Nombre de la planta</string>
+    <string name="description_assigment">Descripción de la Asignación</string>
+    <string name="input_write_the_description">Escriba la descripción</string>
+    <string name="input_date_assigment">Fecha Asignación</string>
+    <string name="toas_assignment_successfully_saved">Asignación guardada correctamente ✅</string>
+    <string name="toast_error_saving_the_assignment">Error al guardar la asignación</string>
+    <string name="button_save_assigment">Guardar asignación</string>
+    <string name="button_register_plant">Registrar planta</string>
+    <string name="categori_anthurium">Anthurium</string>
+    <string name="categori_air_plants">Plantas de aire</string>
+    <string name="categori_hanging_plants">Plantas colgantes</string>
+    <string name="categori_succulents">Suculentas</string>
+    <string name="register_my_plants">Registrar mis plantas ღ</string>
+    <string name="inputmy_name_plant">Nombre de la planta</string>
+    <string name="category_of_plant">Categoría de planta</string>
+    <string name="button_save_plant">Guardar planta</string>
+    <string name="plant_saved">Planta guardada ✅</string>
+</resources>

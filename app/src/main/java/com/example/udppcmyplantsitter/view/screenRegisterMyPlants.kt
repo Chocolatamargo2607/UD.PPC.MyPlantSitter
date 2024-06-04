@@ -41,9 +41,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.udppcmyplantsitter.dataManagement.AssignmentDTO
@@ -60,7 +62,11 @@ fun screenRegisterMyPlants(navController: NavController) {
         mutableStateOf("")
     }
 
-    val nameplant = arrayOf("Anthurium","Air Plants","Bonsais","Captus","Hanging Plants","Succulents")
+    val nameplant = arrayOf(stringResource(R.string.categori_anthurium),
+        stringResource(R.string.categori_air_plants),"Bonsais","Captus",
+        stringResource(R.string.categori_hanging_plants),
+        stringResource(R.string.categori_succulents)
+    )
     val selectPet = remember { mutableStateOf(nameplant[0]) }
     val expanded = remember { mutableStateOf(false) }
 
@@ -71,7 +77,7 @@ fun screenRegisterMyPlants(navController: NavController) {
     ){
         Row() {
             TopAppBar(
-                title = { Text(text=" Register My Plants ღ") },
+                title = { Text(text= stringResource(R.string.register_my_plants)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     MainColor,
                     titleContentColor = Color.White
@@ -103,7 +109,7 @@ fun screenRegisterMyPlants(navController: NavController) {
                     name = it
                 },
                 label = {
-                    Text(text = "Name Plant", color = MainColor)
+                    Text(text = stringResource(R.string.inputmy_name_plant), color = MainColor)
                 },
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.White,
@@ -112,7 +118,7 @@ fun screenRegisterMyPlants(navController: NavController) {
                 )
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Category of plant", color = Color.White)
+            Text(text = stringResource(R.string.category_of_plant), color = Color.White)
             Spacer(modifier = Modifier.height(16.dp))
 
 
@@ -155,11 +161,11 @@ fun screenRegisterMyPlants(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
                 Toast.makeText(
-                    context, "Plant saved ✅", Toast.LENGTH_SHORT
+                    context, context.getString(R.string.plant_saved), Toast.LENGTH_SHORT
                 ).show()
             },colors = ButtonDefaults.buttonColors(Color.White)
             ) {
-                Text(text = "Save plant", color = MainColor)
+                Text(text = stringResource(R.string.button_save_plant), color = MainColor)
             }
         }
     }

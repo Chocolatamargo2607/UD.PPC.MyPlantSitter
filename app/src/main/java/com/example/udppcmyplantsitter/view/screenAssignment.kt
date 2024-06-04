@@ -41,9 +41,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
 import com.udppcmyplantsitter.dataManagement.Helper
@@ -124,7 +126,7 @@ fun screenRegisterAssignment(navController: NavController) {
                     name = it
                 },
                 label = {
-                    Text(text = "Name Plant", color = MainColor)
+                    Text(text = stringResource(R.string.input_name_plant), color = MainColor)
                 },
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.White,
@@ -133,14 +135,14 @@ fun screenRegisterAssignment(navController: NavController) {
                 )
             )
             Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
-            Text(text = "Description Assigment", color = Color.White)
+            Text(text = stringResource(R.string.description_assigment), color = Color.White)
             Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
             TextField(
                 value = task,
                 onValueChange = {
                     task = it
                 },label = {
-                    Text(text = "Write the description", color = MainColor)
+                    Text(text = stringResource(R.string.input_write_the_description), color = MainColor)
                 },
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.White,
@@ -155,7 +157,7 @@ fun screenRegisterAssignment(navController: NavController) {
                     onValueChange = {date = it},
                     readOnly = true,
                     label =  {
-                        Text(text = "Date Assigment",color = MainColor)
+                        Text(text = stringResource(R.string.input_date_assigment),color = MainColor)
                     },
                     colors = TextFieldDefaults.textFieldColors(
                         containerColor = Color.White,
@@ -183,13 +185,15 @@ fun screenRegisterAssignment(navController: NavController) {
                 if (save != -1L) {
                     scope.launch {
                         Toast.makeText(
-                            context, "Assignment successfully saved ✅", Toast.LENGTH_SHORT
+                            context,
+                            context.getString(R.string.toas_assignment_successfully_saved), Toast.LENGTH_SHORT
                         ).show()
                     }
                 } else {
                     scope.launch {
                         Toast.makeText(
-                            context, "Error saving the assignment", Toast.LENGTH_SHORT
+                            context,
+                            context.getString(R.string.toast_error_saving_the_assignment), Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -198,7 +202,7 @@ fun screenRegisterAssignment(navController: NavController) {
                 date= ""
             },colors = ButtonDefaults.buttonColors(Color.White)
             ) {
-                Text(text = "Save Assigment", color = MainColor)
+                Text(text = stringResource(R.string.button_save_assigment), color = MainColor)
             }
         }
     }

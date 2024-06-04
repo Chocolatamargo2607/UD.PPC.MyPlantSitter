@@ -33,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.udppcmyplantsitter.R
@@ -83,7 +84,7 @@ fun tabsMovements(navController: NavController){
                         modifier= Modifier.width(150.dp)
                     ){
                         DropdownMenuItem(
-                            text = { Text("Account", color = SecondColor) },
+                            text = { Text(stringResource(R.string.account), color = SecondColor) },
                             onClick = {
                                 navController.navigate(route = appScreens.screenAccount.router)
                                 showMenu = false
@@ -98,7 +99,7 @@ fun tabsMovements(navController: NavController){
                         )
 
                         DropdownMenuItem(
-                            text = { Text("Language", color = SecondColor) },
+                            text = { Text(stringResource(R.string.language), color = SecondColor) },
                             onClick = {  },
                             leadingIcon = {
                                 Icon(
@@ -111,7 +112,7 @@ fun tabsMovements(navController: NavController){
                             }
                         )
                         DropdownMenuItem(
-                            text = { Text("Log out", color = SecondColor) },
+                            text = { Text(stringResource(R.string.log_out), color = SecondColor) },
                             onClick = { FirebaseAuth.getInstance().signOut()
                                 navController.navigate(route = appScreens.screenWelcome.router) },
                             leadingIcon = {

@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -94,21 +95,9 @@ fun screenWelcome(navController: NavController){
                 contentColor = Color.White
             )
         ) {
-            Text(text = "Log in")
+            Text(text = stringResource(R.string.button_log_in))
         }
         Spacer(modifier = Modifier.width(200.dp))
-
-        Button(onClick = { navController.navigate(route = appScreens.screenRegister.router)},
-
-                colors = ButtonDefaults.buttonColors(
-                    MainColor, // Color hexadecimal como color de fondo
-                    contentColor = Color.White // Color del texto del botón
-                )
-
-            ) {
-            Text(text = "Register")
-
-        }
 
         IconButton(onClick ={ context.startActivity(repositoryintent)}) {
             Icon(

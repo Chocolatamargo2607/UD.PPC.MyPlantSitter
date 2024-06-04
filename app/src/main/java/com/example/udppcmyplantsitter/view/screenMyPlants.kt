@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.udppcmyplantsitter.ui.theme.MainColor
@@ -79,7 +80,7 @@ fun RegisterButton(navController: NavController) {
             .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(MainColor)
     ) {
-        Text(text = "Register Plant")
+        Text(text = stringResource(R.string.button_register_plant))
     }
 }
 @Preview

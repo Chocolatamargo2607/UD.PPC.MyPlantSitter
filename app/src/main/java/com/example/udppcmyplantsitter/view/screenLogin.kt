@@ -36,11 +36,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.example.udppcmyplantsitter.viewModel.AuthFireBase
@@ -83,7 +85,7 @@ fun screenLogin(navController: NavController,
             verticalArrangement = Arrangement.Center
         ){
             if( showLoginForm.value){
-                Text(text = "Login with your account")
+                Text(text = stringResource(R.string.login_with_your_account))
                 UserForm(
                     isCreateAccount = false
                 ){
@@ -94,7 +96,7 @@ fun screenLogin(navController: NavController,
 
                 }
             }else{
-                Text(text = "Register an account")
+                Text(text = stringResource(R.string.register_an_account))
                 UserForm(
                     isCreateAccount = true
                 ){
@@ -116,11 +118,11 @@ fun screenLogin(navController: NavController,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val question=
-                    if (showLoginForm.value)"Don't have an account?"
-                    else "Already have an account?"
+                    if (showLoginForm.value) stringResource(R.string.don_t_have_an_account)
+                    else stringResource(R.string.already_have_an_account)
                 val option=
-                    if(showLoginForm.value)"Register"
-                    else "Log in"
+                    if(showLoginForm.value) stringResource(R.string.option_register)
+                    else stringResource(R.string.option_log_in)
                 Text(text = question)
                 Text(text = option,
                     modifier = Modifier
@@ -163,11 +165,11 @@ fun UserForm(
         )
         PasswordInput(
             passwordState= password,
-            labelId= "Password",
+            labelId= stringResource(R.string.password),
             passwordVisible= passwordVisible
         )
         SubmitButton(
-            textId= if( isCreateAccount)"Register" else "Log in",
+            textId= if( isCreateAccount) stringResource(R.string.in_register) else stringResource(R.string.in_log_in),
             inputValido= valido
         ){
             onDone(email.value.trim(), password.value.trim())
@@ -235,7 +237,7 @@ fun PasswordVisibleIcon(passwordVisible: MutableState<Boolean>) {
 @Composable
 fun EmailImput(
     emailState: MutableState<String>,
-    labelId: String= "Email"
+    labelId: String= stringResource(R.string.email)
 ) {
     InputField(
         valueState= emailState,

@@ -40,6 +40,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.SearchBar
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.SecondColor
 import com.udppcmyplantsitter.dataManagement.Helper
@@ -83,7 +84,7 @@ fun screenMain(navController: NavController){
             )
             Button(onClick = { navController.navigate(route = appScreens.screenAssignment.router)},
                 colors = ButtonDefaults.buttonColors(MainColor)) {
-                Text(text = "Register Assignment")
+                Text(text = stringResource(R.string.button_register_assignment))
             }
 
             SearchBar(
@@ -92,7 +93,7 @@ fun screenMain(navController: NavController){
                 onSearch = onSearch,
                 active = active,
                 onActiveChange = { active = it },
-                placeholder = { Text(text = "Search") },
+                placeholder = { Text(text = stringResource(R.string.search)) },
                 trailingIcon = {
                     IconButton(
                         onClick = { onSearch(query) },
@@ -140,13 +141,14 @@ fun screenMain(navController: NavController){
                                     modifier = Modifier.weight(3f)
                                 )
                                 Text(
-                                    text = "Assigned day: ${song.date}\n",
+                                    text = stringResource(R.string.assigned_day, song.date),
                                     modifier = Modifier.weight(3f)
                                 )
                                 IconButton(onClick = {
                                     assignmentService.delete(song.id)
                                     songs = assignmentService.getAllPlants()
-                                    Toast.makeText(context, "Assignment Deleted", Toast.LENGTH_SHORT)
+                                    Toast.makeText(context,
+                                        context.getString(R.string.assignment_deleted), Toast.LENGTH_SHORT)
                                         .show()
                                 }) {
                                     Icon(Icons.Default.Delete, contentDescription = "Deleted")
@@ -164,11 +166,11 @@ fun screenMain(navController: NavController){
                         confirmButton = {
                             Button(onClick = { /*TODO*/ },
                                 colors = ButtonDefaults.buttonColors(MainColor)) {
-                                Text("Edit")
+                                Text(stringResource(R.string.button_edit))
                             }
                             Button(onClick = { open_Dialog = false },
                                 colors = ButtonDefaults.buttonColors(MainColor)) {
-                                Text("Close")
+                                Text(stringResource(R.string.button_close))
 
                             }
                         }

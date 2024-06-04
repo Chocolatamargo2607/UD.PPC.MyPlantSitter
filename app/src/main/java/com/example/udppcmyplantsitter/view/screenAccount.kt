@@ -26,10 +26,21 @@ import androidx.compose.ui.unit.dp
 import com.example.udppcmyplantsitter.R
 import com.example.udppcmyplantsitter.ui.theme.MainColor
 import com.example.udppcmyplantsitter.viewModel.appNavegation.appScreens
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun screenAccount (navController: NavController){
+
+    val firebaseAuth = FirebaseAuth.getInstance()
+
+    // Obtener el usuario actualmente autenticado
+    val currentUser = firebaseAuth.currentUser
+
+    // Obtener el correo electrónico del usuario
+    val email = currentUser?.email ?: "Correo electrónico no disponible"
+
+
     Row() {
         TopAppBar(
             title = { Text(text=" Account") },
@@ -73,42 +84,16 @@ fun screenAccount (navController: NavController){
                 )
 
                 Text(
-                    text = "*example123*",
-                    color = Color.Black
-                )
-
-                Text(
                     text = "Email: ",
                     color = Color.Black
                 )
-
                 Text(
-                    text = "*email@example.com*",
+                    text = "$email",
                     color = Color.Black
+
                 )
 
-                //Boton modify information
-                Button(
-                    onClick = {  },
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    colors = ButtonDefaults.buttonColors(MainColor)
-                ) {
-                    Text(
-                        text = "Modify Information",
-                        color = Color.White
-                    )
-                }
-                //Boton delete account
-                Button(
-                    onClick = {  },
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    colors = ButtonDefaults.buttonColors(MainColor)
-                ) {
-                    Text(
-                        text = "Delete Account",
-                        color = Color.White
-                        )
-                }
+
 
             }
 
