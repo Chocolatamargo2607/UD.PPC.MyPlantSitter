@@ -38,4 +38,5 @@
     <string name="category_of_plant">Categoría de planta</string>
     <string name="button_save_plant">Guardar planta</string>
     <string name="plant_saved">Planta guardada ✅</string>
+    <string name="Failed">ERROR</string>
 </resources>

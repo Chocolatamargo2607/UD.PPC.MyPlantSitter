@@ -35,42 +35,13 @@ fun screenMyPlants(navController: NavController) {
             .background(Color.White),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ){
-        PlantList(navController)
+
         Spacer(modifier = Modifier.weight(1f))
         RegisterButton(navController)
     }
 }
 
-@Composable
-fun PlantList(navController: NavController) {
-    //ejemplo de plantas
-    val plant1 = Plant("Sunflower",null, R.drawable.sunflower)
-    val plant2 = Plant("Cactus", null, R.drawable.plantexample)
-    val plant3 = Plant("Example Plant", null, R.drawable.iconplant)
 
-    //lista de plantas con su imagen
-    val plantList = listOf(plant1,plant2,plant3)
-
-    LazyColumn(modifier = Modifier.background(Color.White)
-    ){
-        items(plantList) { plant ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .clickable { navController.navigate(route = appScreens.modalMyPlant.router) },
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-        Image(
-            painter = painterResource(id = plant.image!!),
-            contentDescription = null,
-            modifier = Modifier.size(50.dp)
-        )
-        Text(text = plant.name, modifier = Modifier.padding(start = 16.dp))
-    }
-        }
-    }
-}
 @Composable
 fun RegisterButton(navController: NavController) {
     Button(

@@ -37,4 +37,5 @@
     <string name="category_of_plant">Category of plant</string>
     <string name="button_save_plant">Save plant</string>
     <string name="plant_saved">Plant saved ✅</string>
+    <string name="Failed">Plant Error</string>
 </resources>
