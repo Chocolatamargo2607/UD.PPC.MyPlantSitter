@@ -1,16 +1,18 @@
 package com.example.udppcmyplantsitter.view
 
 import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -31,7 +33,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-data class Plant(val name: String, val category: String)
+data class Plant(val id: String, val name: String, val category: String)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,6 +52,7 @@ fun screenMyPlants(navController: NavController) {
                 val documents = db.collection("users").document(email).collection("plants").get().await()
                 plants = documents.map { document ->
                     Plant(
+                        id = document.id,
                         name = document.getString("name") ?: "",
                         category = document.getString("category") ?: ""
                     )
@@ -68,7 +71,7 @@ fun screenMyPlants(navController: NavController) {
     ) {
         if (plants.isEmpty()) {
             Text(
-                text = " ",
+                text = "",
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 color = Color.Gray
             )
@@ -77,7 +80,9 @@ fun screenMyPlants(navController: NavController) {
                 modifier = Modifier.padding(16.dp)
             ) {
                 items(plants) { plant ->
-                    PlantCard(plant)
+                    PlantCard(plant = plant, email = email) {
+                        plants = plants.filter { it.id != plant.id }
+                    }
                 }
             }
         }
@@ -87,16 +92,21 @@ fun screenMyPlants(navController: NavController) {
 }
 
 @Composable
-fun PlantCard(plant: Plant) {
+fun PlantCard(plant: Plant, email: String, onDelete: () -> Unit) {
+    val db = FirebaseFirestore.getInstance()
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
     ) {
         Row(
-            modifier = Modifier.padding(8.dp),
-
-            ){
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Icon(
                 painter = painterResource(id = R.drawable.iconplant),
                 contentDescription = "iconplant",
@@ -104,18 +114,24 @@ fun PlantCard(plant: Plant) {
                 tint = SecondColor
             )
 
-            Column(
-                modifier = Modifier
-
-                    .padding(5.dp)
-            ) {
+            Column {
                 Text(text = "Name: ${plant.name}")
                 Text(text = "Category: ${plant.category}")
-
-
+            }
+            IconButton(onClick = {
+                db.collection("users").document(email).collection("plants").document(plant.id)
+                    .delete()
+                    .addOnSuccessListener {
+                        Log.d("PlantCard", "DocumentSnapshot successfully deleted!")
+                        onDelete()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("PlantCard", "Error deleting document", e)
+                    }
+            }) {
+                Icon(Icons.Default.Delete, contentDescription = "Deleted")
             }
         }
-
     }
 }
 
